@@ -1,0 +1,91 @@
+{
+  "id": "call_mock_hp_ok",
+  "orgId": "org_mock",
+  "type": "outboundPhoneCall",
+  "status": "ended",
+  "endedReason": "customer-ended-call",
+  "createdAt": "2026-08-27T18:00:00.000Z",
+  "startedAt": "2026-08-27T18:00:04.000Z",
+  "endedAt": "2026-08-27T18:01:31.000Z",
+  "cost": 0.19,
+  "assistantId": "asst_mock",
+  "phoneNumberId": "pn_mock",
+  "customer": {
+    "number": "+15550100000",
+    "name": "vapi-verify tester"
+  },
+  "artifact": {
+    "transcript": "AI: Thanks for calling Bayside Dental, this is Ava. How can I help?\nUser: Hi, I'd like to book a cleaning for next Tuesday at 10am.\nAI: Sure. Can I get your name and a phone number?\nUser: Sam Rivera, 555-0142.\nAI: Got it. I have you down for a cleaning next Tuesday at 10 AM under Sam Rivera, 555-0142. Does that look right?\nUser: Yes, perfect.\nAI: You're all set. We'll send a reminder the day before. Anything else?\nUser: No, thanks. Bye.\nAI: Goodbye!",
+    "messages": [
+      {
+        "role": "bot",
+        "message": "Thanks for calling Bayside Dental, this is Ava. How can I help?",
+        "secondsFromStart": 0.0
+      },
+      {
+        "role": "user",
+        "message": "Hi, I'd like to book a cleaning for next Tuesday at 10am.",
+        "secondsFromStart": 4.2
+      },
+      {
+        "role": "bot",
+        "message": "Sure. Can I get your name and a phone number?",
+        "secondsFromStart": 8.4
+      },
+      {
+        "role": "user",
+        "message": "Sam Rivera, 555-0142.",
+        "secondsFromStart": 12.6
+      },
+      {
+        "role": "bot",
+        "message": "Got it. I have you down for a cleaning next Tuesday at 10 AM under Sam Rivera, 555-0142. Does that look right?",
+        "secondsFromStart": 16.8
+      },
+      {
+        "role": "user",
+        "message": "Yes, perfect.",
+        "secondsFromStart": 21.0
+      },
+      {
+        "role": "bot",
+        "message": "You're all set. We'll send a reminder the day before. Anything else?",
+        "secondsFromStart": 25.2
+      },
+      {
+        "role": "user",
+        "message": "No, thanks. Bye.",
+        "secondsFromStart": 29.4
+      },
+      {
+        "role": "bot",
+        "message": "Goodbye!",
+        "secondsFromStart": 33.6
+      }
+    ],
+    "recordingUrl": "https://example.invalid/recordings/call_mock_hp_ok.wav",
+    "structuredOutputs": {
+      "appointment": {
+        "booked": true,
+        "date": "2026-09-01",
+        "time": "10:00",
+        "name": "Sam Rivera"
+      }
+    },
+    "performanceMetrics": {
+      "turnLatencyAverage": 1120,
+      "modelLatencyAverage": 540,
+      "voiceLatencyAverage": 310,
+      "transcriberLatencyAverage": 190,
+      "endpointingLatencyAverage": 420,
+      "numUserInterrupted": 0,
+      "numAssistantInterrupted": 1
+    }
+  },
+  "analysis": {
+    "summary": "Caller booked a cleaning for Tuesday 10 AM.",
+    "successEvaluation": "true",
+    "structuredData": {}
+  },
+  "_simulate_infra_failure_on_attempt": 1
+}

@@ -1,0 +1,73 @@
+{
+  "id": "call_mock_intr_ok",
+  "orgId": "org_mock",
+  "type": "outboundPhoneCall",
+  "status": "ended",
+  "endedReason": "customer-ended-call",
+  "createdAt": "2026-08-27T18:00:00.000Z",
+  "startedAt": "2026-08-27T18:00:04.000Z",
+  "endedAt": "2026-08-27T18:01:31.000Z",
+  "cost": 0.19,
+  "assistantId": "asst_mock",
+  "phoneNumberId": "pn_mock",
+  "customer": {
+    "number": "+15550100000",
+    "name": "vapi-verify tester"
+  },
+  "artifact": {
+    "transcript": "AI: Bayside Dental, this is Ava.\nUser: What are your hours?\nAI: We're open Monday 8 to 5, Tuesday 8 to 5, Wednesday\u2014\nUser: Sorry, just Saturday.\nAI: Saturday we're open 9 to 1.\nUser: Great, thanks.\nAI: Happy to help. Goodbye!",
+    "messages": [
+      {
+        "role": "bot",
+        "message": "Bayside Dental, this is Ava.",
+        "secondsFromStart": 0.0
+      },
+      {
+        "role": "user",
+        "message": "What are your hours?",
+        "secondsFromStart": 4.2
+      },
+      {
+        "role": "bot",
+        "message": "We're open Monday 8 to 5, Tuesday 8 to 5, Wednesday\u2014",
+        "secondsFromStart": 8.4
+      },
+      {
+        "role": "user",
+        "message": "Sorry, just Saturday.",
+        "secondsFromStart": 12.6
+      },
+      {
+        "role": "bot",
+        "message": "Saturday we're open 9 to 1.",
+        "secondsFromStart": 16.8
+      },
+      {
+        "role": "user",
+        "message": "Great, thanks.",
+        "secondsFromStart": 21.0
+      },
+      {
+        "role": "bot",
+        "message": "Happy to help. Goodbye!",
+        "secondsFromStart": 25.2
+      }
+    ],
+    "recordingUrl": "https://example.invalid/recordings/call_mock_intr_ok.wav",
+    "structuredOutputs": {},
+    "performanceMetrics": {
+      "turnLatencyAverage": 1120,
+      "modelLatencyAverage": 540,
+      "voiceLatencyAverage": 310,
+      "transcriberLatencyAverage": 190,
+      "endpointingLatencyAverage": 460,
+      "numUserInterrupted": 1,
+      "numAssistantInterrupted": 1
+    }
+  },
+  "analysis": {
+    "summary": "Caller asked about Saturday hours.",
+    "successEvaluation": "true",
+    "structuredData": {}
+  }
+}

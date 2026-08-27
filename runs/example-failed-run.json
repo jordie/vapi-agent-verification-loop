@@ -1,0 +1,93 @@
+{
+  "assertions": [
+    {
+      "critical": true,
+      "description": "call ended normally",
+      "detail": "endedReason='assistant-forwarded-call'",
+      "kind": "ended_reason_in",
+      "passed": false
+    },
+    {
+      "critical": true,
+      "description": "agent confirms the booking with day and time",
+      "detail": "no match",
+      "kind": "transcript_regex",
+      "passed": false
+    },
+    {
+      "critical": true,
+      "description": "structured output says the appointment was booked",
+      "detail": "appointment.booked=False (expected True)",
+      "kind": "structured_output",
+      "passed": false
+    },
+    {
+      "critical": true,
+      "description": "agent never punts to a transfer",
+      "detail": "found forbidden: 'let me transfer'",
+      "kind": "forbidden_phrase",
+      "passed": false
+    },
+    {
+      "critical": true,
+      "description": "average turn latency within budget",
+      "detail": "turnLatencyAverage=2210 ms (max 1500)",
+      "kind": "latency_max",
+      "passed": false
+    },
+    {
+      "critical": false,
+      "description": "conversation quality (LLM judge \u2014 signal only)",
+      "detail": "[claude-cli] r warmly and collected both name and phone number, but it then read back \"next Thursday at 10 AM\" when the caller had clearly asked for Tuesday \u2014 ignoring the caller's stated time. When corrected, rather than fixing the day and re-confirming, it apologized and transferred the caller to the front desk, so the date and time were never explicitly confirmed and the call ended abruptly without a polite close or resolution. Two of the rubric's explicit FAIL conditions (ignored the stated time, ended abruptly) are met, and the PASS requirement of explicit date/time confirmation is not.\n\nVERDICT: FAIL",
+      "kind": "ai_rubric",
+      "passed": false
+    }
+  ],
+  "attempt": 1,
+  "backend": "mock",
+  "call_id": "call_mock_hp_fail",
+  "created_at": "2026-08-30T18:52:08.079+00:00",
+  "ended_at": "2026-08-30T18:52:16.066+00:00",
+  "evidence_ref": "runs/e19dd2f58443/evidence.json",
+  "failure_class": "semantic",
+  "failure_reason": "call ended normally; agent confirms the booking with day and time; structured output says the appointment was booked; agent never punts to a transfer; average turn latency within budget",
+  "git_sha": "c68e86aff793c34b25740d0ba39bd1ca63247b03",
+  "history": [
+    {
+      "at": "2026-08-30T18:52:08.079+00:00",
+      "from": "queued",
+      "note": "start",
+      "to": "running"
+    },
+    {
+      "at": "2026-08-30T18:52:08.080+00:00",
+      "from": "running",
+      "note": "evidence at evidence.json",
+      "to": "evidence_collected"
+    },
+    {
+      "at": "2026-08-30T18:52:16.066+00:00",
+      "from": "evidence_collected",
+      "note": "call ended normally; agent confirms the booking with day and time; structured output says the appointment was booked; agent never punts to a transfer; average turn latency within budget",
+      "to": "failed"
+    }
+  ],
+  "latency_client_observed_ms": 0,
+  "latency_provider_reported": {
+    "endpointingLatencyAverage": 420,
+    "modelLatencyAverage": 540,
+    "numAssistantInterrupted": 1,
+    "numUserInterrupted": 0,
+    "transcriberLatencyAverage": 190,
+    "turnLatencyAverage": 2210,
+    "voiceLatencyAverage": 310
+  },
+  "max_attempts": 2,
+  "outcome": "5 critical assertion(s) failed",
+  "run_id": "e19dd2f58443",
+  "scenario_id": "happy_path",
+  "schema_version": "1",
+  "started_at": "2026-08-30T18:52:08.079+00:00",
+  "status": "failed",
+  "task_id": "demo-2"
+}

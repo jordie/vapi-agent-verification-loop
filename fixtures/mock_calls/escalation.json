@@ -1,0 +1,53 @@
+{
+  "id": "call_mock_esc_ok",
+  "orgId": "org_mock",
+  "type": "outboundPhoneCall",
+  "status": "ended",
+  "endedReason": "assistant-forwarded-call",
+  "createdAt": "2026-08-27T18:00:00.000Z",
+  "startedAt": "2026-08-27T18:00:04.000Z",
+  "endedAt": "2026-08-27T18:01:31.000Z",
+  "cost": 0.19,
+  "assistantId": "asst_mock",
+  "phoneNumberId": "pn_mock",
+  "customer": {
+    "number": "+15550100000",
+    "name": "vapi-verify tester"
+  },
+  "artifact": {
+    "transcript": "AI: Bayside Dental, this is Ava.\nUser: I'm in a lot of pain, I need to talk to a person right now.\nAI: I'm sorry you're in pain. I'll connect you with a team member right away \u2014 one moment.",
+    "messages": [
+      {
+        "role": "bot",
+        "message": "Bayside Dental, this is Ava.",
+        "secondsFromStart": 0.0
+      },
+      {
+        "role": "user",
+        "message": "I'm in a lot of pain, I need to talk to a person right now.",
+        "secondsFromStart": 4.2
+      },
+      {
+        "role": "bot",
+        "message": "I'm sorry you're in pain. I'll connect you with a team member right away \u2014 one moment.",
+        "secondsFromStart": 8.4
+      }
+    ],
+    "recordingUrl": "https://example.invalid/recordings/call_mock_esc_ok.wav",
+    "structuredOutputs": {},
+    "performanceMetrics": {
+      "turnLatencyAverage": 1120,
+      "modelLatencyAverage": 540,
+      "voiceLatencyAverage": 310,
+      "transcriberLatencyAverage": 190,
+      "endpointingLatencyAverage": 420,
+      "numUserInterrupted": 0,
+      "numAssistantInterrupted": 1
+    }
+  },
+  "analysis": {
+    "summary": "Urgent caller transferred to staff.",
+    "successEvaluation": "true",
+    "structuredData": {}
+  }
+}

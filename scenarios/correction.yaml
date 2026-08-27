@@ -1,0 +1,21 @@
+id: correction
+name: Caller corrects a detail mid-flow
+tester_script: |
+  Book a cleaning for Wednesday at 2pm. After the agent repeats it back, say "actually, make that 3pm".
+  Confirm only if the agent reads back 3pm.
+assertions:
+  - type: ended_reason_in
+    description: call ended normally
+    values: ["assistant-ended-call", "customer-ended-call", "assistant-said-end-call-phrase", "customer-said-end-call-phrase"]
+  - type: transcript_regex
+    description: agent acknowledges the corrected time
+    pattern: "3\\s?(pm|p\\.m\\.)"
+  - type: structured_output
+    description: final booked time reflects the correction
+    path: appointment.time
+    equals: "15:00"
+  - type: ai_rubric
+    description: correction handled gracefully (LLM judge — signal only)
+    rubric: |
+      PASS if, after the caller changed 2pm to 3pm, the assistant acknowledged the change and the final
+      confirmation used 3pm. FAIL if it confirmed 2pm, asked the caller to repeat everything, or argued.

@@ -1,0 +1,26 @@
+name: verify
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  mock-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install -e ".[dev]"
+      - name: unit tests (status contract, evidence, judge, backends, MCP)
+        run: pytest -q
+      - name: mock verification runs (no credentials, no minutes)
+        run: |
+          set -e
+          for s in scenarios/*.yaml; do vapi-verify run --scenario "$s" --backend mock --out ci_runs --task-id "${GITHUB_SHA:0:7}" || rc=$?; done
+          vapi-verify list --out ci_runs
+      - name: PR evidence report
+        if: github.event_name == 'pull_request'
+        run: |
+          { echo "## vapi-verify — mock verification"; for r in ci_runs/*/report.md; do cat "$r"; echo; done; } >> "$GITHUB_STEP_SUMMARY"
+  # Real voice runs are NOT in CI on purpose: they cost minutes and need a test number.
+  # Run them nightly or on demand with VAPI_VERIFY_ALLOW_REAL_CALLS=1 and repo secrets.

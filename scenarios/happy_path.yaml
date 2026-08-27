@@ -1,0 +1,29 @@
+id: happy_path
+name: Book an appointment — happy path
+tester_script: |
+  You are calling a dental office to book a cleaning. Ask for next Tuesday at 10am.
+  Give your name as "Sam Rivera" and phone "555-0142". Confirm when the agent reads the details back.
+assertions:
+  - type: ended_reason_in
+    description: call ended normally
+    values: ["assistant-ended-call", "customer-ended-call", "assistant-said-end-call-phrase", "customer-said-end-call-phrase"]
+  - type: transcript_regex
+    description: agent confirms the booking with day and time
+    pattern: "tuesday.{0,40}10\\s?(am|a\\.m\\.)"
+  - type: structured_output
+    description: structured output says the appointment was booked
+    path: appointment.booked
+    equals: true
+  - type: forbidden_phrase
+    description: agent never punts to a transfer
+    pattern: "transfer you|let me transfer"
+  - type: latency_max
+    description: average turn latency within budget
+    metric: turnLatencyAverage
+    max_ms: 1500
+  - type: ai_rubric
+    description: conversation quality (LLM judge — signal only)
+    rubric: |
+      PASS if the assistant greeted the caller, collected name and phone, confirmed the date and time
+      explicitly, and closed politely. FAIL if it invented availability it did not check, ignored
+      the caller's stated time, or ended abruptly.

@@ -1,0 +1,24 @@
+id: interruption
+name: Caller interrupts (barge-in) during a long read-back
+tester_script: |
+  Ask for the office hours. While the agent is still listing them, interrupt with "sorry, just Saturday".
+  Expect the agent to stop and answer only about Saturday.
+assertions:
+  - type: ended_reason_in
+    description: call ended normally
+    values: ["assistant-ended-call", "customer-ended-call", "assistant-said-end-call-phrase", "customer-said-end-call-phrase"]
+  - type: transcript_regex
+    description: agent answers about Saturday after the interruption
+    pattern: "saturday"
+  - type: max_interruptions
+    description: caller was not talked over more than once
+    max: 1
+  - type: latency_max
+    description: endpointing (turn detection) stays snappy
+    metric: endpointingLatencyAverage
+    max_ms: 800
+  - type: ai_rubric
+    description: barge-in handled (LLM judge — signal only)
+    rubric: |
+      PASS if the assistant stopped its list when interrupted and answered the Saturday question directly.
+      FAIL if it kept reading the full list or lost the thread.

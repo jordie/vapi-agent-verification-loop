@@ -1,0 +1,79 @@
+{
+  "id": "call_mock_corr_ok",
+  "orgId": "org_mock",
+  "type": "outboundPhoneCall",
+  "status": "ended",
+  "endedReason": "assistant-ended-call",
+  "createdAt": "2026-08-27T18:00:00.000Z",
+  "startedAt": "2026-08-27T18:00:04.000Z",
+  "endedAt": "2026-08-27T18:01:31.000Z",
+  "cost": 0.19,
+  "assistantId": "asst_mock",
+  "phoneNumberId": "pn_mock",
+  "customer": {
+    "number": "+15550100000",
+    "name": "vapi-verify tester"
+  },
+  "artifact": {
+    "transcript": "AI: Bayside Dental, this is Ava.\nUser: I'd like a cleaning Wednesday at 2pm.\nAI: Wednesday at 2 PM. Name and phone?\nUser: Sam Rivera, 555-0142. Actually, make that 3pm.\nAI: No problem \u2014 updating that to Wednesday at 3 PM for Sam Rivera. Shall I confirm?\nUser: Yes.\nAI: Confirmed: Wednesday at 3 PM. Goodbye!",
+    "messages": [
+      {
+        "role": "bot",
+        "message": "Bayside Dental, this is Ava.",
+        "secondsFromStart": 0.0
+      },
+      {
+        "role": "user",
+        "message": "I'd like a cleaning Wednesday at 2pm.",
+        "secondsFromStart": 4.2
+      },
+      {
+        "role": "bot",
+        "message": "Wednesday at 2 PM. Name and phone?",
+        "secondsFromStart": 8.4
+      },
+      {
+        "role": "user",
+        "message": "Sam Rivera, 555-0142. Actually, make that 3pm.",
+        "secondsFromStart": 12.6
+      },
+      {
+        "role": "bot",
+        "message": "No problem \u2014 updating that to Wednesday at 3 PM for Sam Rivera. Shall I confirm?",
+        "secondsFromStart": 16.8
+      },
+      {
+        "role": "user",
+        "message": "Yes.",
+        "secondsFromStart": 21.0
+      },
+      {
+        "role": "bot",
+        "message": "Confirmed: Wednesday at 3 PM. Goodbye!",
+        "secondsFromStart": 25.2
+      }
+    ],
+    "recordingUrl": "https://example.invalid/recordings/call_mock_corr_ok.wav",
+    "structuredOutputs": {
+      "appointment": {
+        "booked": true,
+        "date": "2026-09-02",
+        "time": "15:00"
+      }
+    },
+    "performanceMetrics": {
+      "turnLatencyAverage": 1120,
+      "modelLatencyAverage": 540,
+      "voiceLatencyAverage": 310,
+      "transcriberLatencyAverage": 190,
+      "endpointingLatencyAverage": 420,
+      "numUserInterrupted": 0,
+      "numAssistantInterrupted": 1
+    }
+  },
+  "analysis": {
+    "summary": "Booked Wednesday 3 PM after a correction.",
+    "successEvaluation": "true",
+    "structuredData": {}
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "assertions": [
+    {
+      "critical": true,
+      "description": "call ended normally",
+      "detail": "endedReason='customer-ended-call'",
+      "kind": "ended_reason_in",
+      "passed": true
+    },
+    {
+      "critical": true,
+      "description": "agent confirms the booking with day and time",
+      "detail": "matched: 'Tuesday at 10 AM'",
+      "kind": "transcript_regex",
+      "passed": true
+    },
+    {
+      "critical": true,
+      "description": "structured output says the appointment was booked",
+      "detail": "appointment.booked=True (expected True)",
+      "kind": "structured_output",
+      "passed": true
+    },
+    {
+      "critical": true,
+      "description": "agent never punts to a transfer",
+      "detail": "absent",
+      "kind": "forbidden_phrase",
+      "passed": true
+    },
+    {
+      "critical": true,
+      "description": "average turn latency within budget",
+      "detail": "turnLatencyAverage=1120 ms (max 1500)",
+      "kind": "latency_max",
+      "passed": true
+    },
+    {
+      "critical": false,
+      "description": "conversation quality (LLM judge \u2014 signal only)",
+      "detail": "[claude-cli] mber (555-0142), and explicitly read back the date and time (\"next Tuesday at 10 AM\") for the caller to confirm, which they did. It used the caller's own requested time rather than substituting a different slot, and it closed politely with a reminder note, an offer of further help, and a goodbye. The one soft spot is that the transcript shows no explicit availability check before booking, but the assistant never claimed or invented availability (\"we have an opening\") \u2014 it simply recorded the caller's request and confirmed it \u2014 so this does not meet the FAIL criterion as written.\n\nVERDICT: PASS",
+      "kind": "ai_rubric",
+      "passed": true
+    }
+  ],
+  "attempt": 1,
+  "backend": "mock",
+  "call_id": "call_mock_hp_ok",
+  "created_at": "2026-08-27T19:23:56.435+00:00",
+  "ended_at": "2026-08-27T19:24:09.861+00:00",
+  "evidence_ref": "runs/6c2aa4c01f3c/evidence.json",
+  "failure_class": "none",
+  "failure_reason": "",
+  "git_sha": "unknown",
+  "history": [
+    {
+      "at": "2026-08-27T19:23:56.436+00:00",
+      "from": "queued",
+      "note": "start",
+      "to": "running"
+    },
+    {
+      "at": "2026-08-27T19:23:56.436+00:00",
+      "from": "running",
+      "note": "evidence at evidence.json",
+      "to": "evidence_collected"
+    },
+    {
+      "at": "2026-08-27T19:24:09.861+00:00",
+      "from": "evidence_collected",
+      "note": "all 6 assertion(s) passed",
+      "to": "passed"
+    }
+  ],
+  "latency_client_observed_ms": 0,
+  "latency_provider_reported": {
+    "endpointingLatencyAverage": 420,
+    "modelLatencyAverage": 540,
+    "numAssistantInterrupted": 1,
+    "numUserInterrupted": 0,
+    "transcriberLatencyAverage": 190,
+    "turnLatencyAverage": 1120,
+    "voiceLatencyAverage": 310
+  },
+  "max_attempts": 2,
+  "outcome": "all 6 assertion(s) passed",
+  "run_id": "6c2aa4c01f3c",
+  "scenario_id": "happy_path",
+  "schema_version": "1",
+  "started_at": "2026-08-27T19:23:56.436+00:00",
+  "status": "passed",
+  "task_id": "demo-1"
+}

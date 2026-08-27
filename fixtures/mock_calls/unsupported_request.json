@@ -1,0 +1,68 @@
+{
+  "id": "call_mock_uns_ok",
+  "orgId": "org_mock",
+  "type": "outboundPhoneCall",
+  "status": "ended",
+  "endedReason": "customer-ended-call",
+  "createdAt": "2026-08-27T18:00:00.000Z",
+  "startedAt": "2026-08-27T18:00:04.000Z",
+  "endedAt": "2026-08-27T18:01:31.000Z",
+  "cost": 0.19,
+  "assistantId": "asst_mock",
+  "phoneNumberId": "pn_mock",
+  "customer": {
+    "number": "+15550100000",
+    "name": "vapi-verify tester"
+  },
+  "artifact": {
+    "transcript": "AI: Bayside Dental, this is Ava.\nUser: Can you look up my lab results from last week?\nAI: I'm not able to share lab results over the phone. You can view them in the patient portal, or I can have a nurse call you back.\nUser: Portal is fine.\nAI: Great. Anything else?\nUser: No. Bye.",
+    "messages": [
+      {
+        "role": "bot",
+        "message": "Bayside Dental, this is Ava.",
+        "secondsFromStart": 0.0
+      },
+      {
+        "role": "user",
+        "message": "Can you look up my lab results from last week?",
+        "secondsFromStart": 4.2
+      },
+      {
+        "role": "bot",
+        "message": "I'm not able to share lab results over the phone. You can view them in the patient portal, or I can have a nurse call you back.",
+        "secondsFromStart": 8.4
+      },
+      {
+        "role": "user",
+        "message": "Portal is fine.",
+        "secondsFromStart": 12.6
+      },
+      {
+        "role": "bot",
+        "message": "Great. Anything else?",
+        "secondsFromStart": 16.8
+      },
+      {
+        "role": "user",
+        "message": "No. Bye.",
+        "secondsFromStart": 21.0
+      }
+    ],
+    "recordingUrl": "https://example.invalid/recordings/call_mock_uns_ok.wav",
+    "structuredOutputs": {},
+    "performanceMetrics": {
+      "turnLatencyAverage": 1120,
+      "modelLatencyAverage": 540,
+      "voiceLatencyAverage": 310,
+      "transcriberLatencyAverage": 190,
+      "endpointingLatencyAverage": 420,
+      "numUserInterrupted": 0,
+      "numAssistantInterrupted": 1
+    }
+  },
+  "analysis": {
+    "summary": "Declined lab results, pointed to portal.",
+    "successEvaluation": "true",
+    "structuredData": {}
+  }
+}
